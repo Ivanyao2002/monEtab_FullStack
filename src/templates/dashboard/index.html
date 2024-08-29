@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block style %}
+  <style>
+    .content_dashboard {
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.card_dashboard {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.card_dashboard h3 {
+    margin: 10px 0;
+}
+
+.content_rapport {
+    flex: 1;
+    padding: 20px;
+}
+h1_rapport {
+    margin: 0 0 20px 0;
+}
+.form-group_rapport {
+    margin-bottom: 20px;
+}
+select_rapport {
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.button_rapport {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.pdf_rapport {
+    background-color: #FF0000; 
+    color: white;
+}
+.excel_rapport {
+    background-color: #28A745; 
+    color: white;
+}
+  </style>
+{% endblock style %}
+
+{% block title %}
+    <title>MonEtab - Dashboard</title>
+{% endblock %}
+
+{% block body %}
+<div class="content_dashboard">
+  <h1>Tableau de bord</h1>
+  <div class="dashboard">
+      <div class="card_dashboard">
+          <h3>Nombre d'élève</h3>
+          <p>128 100</p>
+      </div>
+      <div class="card_dashboard">
+          <h3>Nombre de professeur</h3>
+          <p>128 100</p>
+      </div>
+      <div class="card_dashboard">
+          <h3>Nombre d'utilisateur</h3>
+          <p>128 100</p>
+      </div>
+      <div class="card_dashboard">
+          <h3>Élève par genre</h3>
+          <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+      </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+  const xValues = ["Homme", "Femme"];
+  const yValues = [55, 45];
+  const barColors = [
+    "#adaaa2",
+    "#524f49"
+  ];
+  
+  new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+      }
+    }
+  });
+</script>    
+{% endblock script %}
+

@@ -1,0 +1,50 @@
+.content_student {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    margin: 0 0 20px 0;
+}
+form {
+    width: 50%;
+}
+label {
+    display: inline;
+    margin-bottom: 8px;
+}
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.cancel {
+    background-color: #FF0000; 
+    color: white;
+}
+.save {
+    background-color: #28A745; 
+    color: white;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.col {
+    flex: 0 0 48%;
+}

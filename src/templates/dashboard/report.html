@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="content_rapport">
+    <h1 class="h1_rapport">Rapport</h1>
+    <div class="form-group_rapport">
+        <!-- <label for="report-type"></label> -->
+        <select id="report-type" class="select_rapport">
+            <option value="">.... Sélectionner une option ....</option>
+            <option value="eleves">Liste des élèves</option>
+            <option value="professeurs">Liste des professeurs</option>
+            <option value="utilisateurs">Liste des utilisateurs</option>
+        </select>
+        <button class="button_rapport pdf_rapport">Générer format PDF</button>
+        <button class="button_rapport excel_rapport">Générer format Excel</button>
+    </div>
+</div>
+{% endblock body %}
+
+

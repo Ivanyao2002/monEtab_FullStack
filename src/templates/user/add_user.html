@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+ 
+{% block title %}
+    <title>MonEtab - User</title>
+{% endblock %}
+
+{% block style %}
+    <style>
+        .content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            margin: 0 0 20px 0;
+        }
+        form {
+            width: 30%;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .cancel {
+            background-color: #FF0000; 
+            color: white;
+        }
+        .save {
+            background-color: #28A745; 
+            color: white;
+        }
+    </style>
+{% endblock style %}
+
+
+{% block body %}
+    <div class="content">
+        <h1>{{ title }}</h1>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form class="" method="post" novalidate>
+            {% csrf_token %} 
+            {{ form|crispy }}  
+            <button type="submit" class="button save">{{ submit_value }}</button>
+            <button type="reset"> Annuler</button>
+        </form>
+
+        {% if form.errors %}
+            <div class="error">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+{% endblock body %}

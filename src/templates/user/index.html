@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+         .content {
+            flex: 1;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0 0 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #f2f2f2;
+        }
+        .button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .edit {
+            background-color: #FFA500; 
+            color: #575552;
+        }
+    </style>
+{% endblock style %}
+
+{% block title %}
+<title>MonEtab - User</title>
+{% endblock %}
+
+{% block body %}
+<div class="content_user">
+    <h1>Utilisateurs (2)</h1>
+    <button type="submit"><a href="{% url 'user:add' %}">Ajouter utilisateur</a></button>
+    <table>
+        <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.pseudo }}</td>
+                <td>{{ user.date_creation|date:"D d M Y" }}</td>
+                <td>
+                    <a class="button modify" href="{% url 'user:update' user.id %}">Modifier</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock body %}
+
+
+
